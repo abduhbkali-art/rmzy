@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رمزي الضبيبي · استوديو تصميم</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', 'Inter', sans-serif;
+      background-color: #fcfcfc;
+      color: #1e1e2a;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cairo', 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- رأس الموقع والتنقل ----- */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+      background-color: rgba(255,255,255,0.9);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      max-width: 220px;
+    }
+
+    .logo-img {
+      max-height: 60px;
+      width: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .logo-fallback {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3c3b5e, #5f4b8b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2b2b3a;
+      transition: color 0.2s;
+      font-size: 1.1rem;
+    }
+
+    .nav-links a:hover {
+      color: #5f4b8b;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #2b2b3a;
+    }
+
+    /* القائمة الجانبية للجوال */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #ffffffdd;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 2rem 0;
+        box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.2s;
+        pointer-events: none;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ----- القسم الرئيسي ----- */
+    .hero {
+      padding: 80px 0 100px;
+      background: linear-gradient(145deg, #f9f6ff 0%, #ffffff 100%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.3rem;
+      line-height: 1.3;
+      background: linear-gradient(to left, #2d2d42, #5a4a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #4b4b5e;
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #5f4b8b;
+      color: white;
+      padding: 14px 38px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 20px -6px #5f4b8baa;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: #4a3a6e;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      background: #e3ddf2;
+      border-radius: 40px;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.2);
+    }
+
+    .hero-image i {
+      font-size: 12rem;
+      color: #4a3a6e;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text p {
+        max-width: 100%;
+      }
+      .hero-image {
+        order: -1;
+      }
+    }
+
+    /* ----- أقسام عامة ----- */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #2d2d42;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #5f5f73;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* شبكة الأعمال */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -10px rgba(60, 50, 80, 0.1);
+      transition: 0.2s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 40px -10px #3a2e50;
+    }
+
+    .portfolio-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      color: white;
+      font-weight: 600;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .portfolio-item:nth-child(1) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/1043/400/300'); }
+    .portfolio-item:nth-child(2) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/106/400/300'); }
+    .portfolio-item:nth-child(3) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/20/400/300'); }
+    .portfolio-item:nth-child(4) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/26/400/300'); }
+    .portfolio-item:nth-child(5) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/30/400/300'); }
+    .portfolio-item:nth-child(6) .portfolio-img { background-image: linear-gradient(0deg, #1f1d2e80, #1f1d2e80), url('https://picsum.photos/id/45/400/300'); }
+
+    .portfolio-caption {
+      padding: 20px 16px 20px;
+      background: white;
+    }
+    .portfolio-caption h3 { font-size: 1.3rem; margin-bottom: 4px; }
+    .portfolio-caption p { color: #5f5f73; font-size: 0.95rem; }
+
+    /* بطاقات الخدمات */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 38px 20px 32px;
+      border-radius: 40px;
+      text-align: center;
+      box-shadow: 0 20px 30px -8px rgba(0,0,0,0.05);
+      transition: 0.2s;
+      border: 1px solid #f0ecf6;
+    }
+
+    .service-card:hover {
+      border-color: #b4a5d0;
+      background: #fdfaff;
+    }
+
+    .service-card i {
+      font-size: 3.3rem;
+      color: #5f4b8b;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .service-card p {
+      color: #5a5a70;
+    }
+
+    /* قسم "عن" */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: #d9d0e9;
+      border-radius: 50px;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-image i {
+      font-size: 10rem;
+      color: #3d2e5a;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2d2d42;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: #4f4f63;
+    }
+
+    /* زر الواتساب (رقم الهاتف) */
+    .whatsapp-link {
+      direction: ltr;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: white !important;
+      padding: 10px 25px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 15px 0;
+      transition: background 0.2s;
+      border: 1px solid #20b859;
+    }
+
+    .whatsapp-link i {
+      font-size: 1.5rem;
+    }
+
+    .whatsapp-link:hover {
+      background: #20b859;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -8px #25D366;
+    }
+
+    /* نموذج الاتصال مع تعديل الإرسال */
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 50px;
+      border-radius: 50px;
+      box-shadow: 0 30px 40px -20px rgba(50,40,70,0.2);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 22px;
+      border: 1px solid #ddd8e8;
+      border-radius: 60px;
+      font-family: 'Cairo', 'Inter', sans-serif;
+      font-size: 1rem;
+      background: #faf9fc;
+      transition: 0.15s;
+    }
+
+    textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #7f67b1;
+      background: white;
+      box-shadow: 0 0 0 4px #f0eaff;
+    }
+
+    .contact-btn {
+      background: #5f4b8b;
+      color: white;
+      border: none;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .contact-btn:hover {
+      background: #4d3b73;
+    }
+
+    footer {
+      background: #1e1a2b;
+      color: #ddd8e8;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: #ddd8e8;
+      font-size: 1.5rem;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #b4a5d0;
+    }
+
+    .instruction-note {
+      background: #fff9e0;
+      padding: 4px 12px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      color: #8a6e3c;
+      display: inline-block;
+      margin-right: 10px;
+      border: 1px dashed #c0a86a;
+    }
+    @media (max-width: 600px) {
+      .instruction-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <!-- شعار قابل للاستبدال -->
+      <div class="logo-container">
+        <img src="https://via.placeholder.com/220x80/5f4b8b/ffffff?text=%D8%B1%D9%85%D8%B2%D9%8A+%D8%A7%D9%84%D8%B6%D8%A8%D9%8A%D8%A8%D9%8A" 
+             alt="شعار رمزي الضبيبي" 
+             class="logo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="logo-fallback" style="display: none;">رمزي الضبيبي</div>
+      </div>
+      <span class="instruction-note"><i class="fas fa-arrow-right"></i> استبدل الرابط أعلاه بشعارك</span>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#portfolio">أعمالنا</a></li>
+        <li><a href="#services">خدمات</a></li>
+        <li><a href="#about">عن رمزي</a></li>
+        <li><a href="#contact">اتصل</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>تصميم يعبر بصوت أعلى من الكلمات</h1>
+          <p>هوية، جرافيك، وقصص بصرية. استوديو رمزي الضبيبي يصنع تصاميم تترك أثراً. أجمع بين الإبداع والاستراتيجية لأجل علامتك.</p>
+          <a href="#portfolio" class="btn">شاهدوا أعمالي</a>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-paint-brush"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأعمال -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title">مشاريع مختارة</h2>
+        <p class="section-sub">من هويات تجارية إلى رسوم رقمية – كل مشروع رحلة بصرية فريدة.</p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>مستحضرات شروق</h3><p>تغليف وهوية</p></div></div>
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>مطعم مديني</h3><p>قائمة طعام ورسوم</p></div></div>
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>مجلة ازدهار</h3><p>تصميم تحريري</p></div></div>
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>تطبيق نودو</h3><p>تجربة المستخدم وواجهات</p></div></div>
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>ميرش ڤويد</h3><p>طباعة سلك سكرين</p></div></div>
+          <div class="portfolio-item"><div class="portfolio-img"></div><div class="portfolio-caption"><h3>ملصقات نباتية</h3><p>إخراج فني</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الخدمات -->
+    <section id="services" style="background: #f8f4ff;">
+      <div class="container">
+        <h2 class="section-title">ماذا أقدم</h2>
+        <p class="section-sub">أغطي كامل طيف التصميم الجرافيكي، دائماً بلمسة أصالة.</p>
+        <div class="services-grid">
+          <div class="service-card"><i class="fas fa-bezier-curve"></i><h3>هوية تجارية</h3><p>شعار، ألوان، صوت العلامة التجارية.</p></div>
+          <div class="service-card"><i class="fas fa-mobile-alt"></i><h3>تصميم رقمي</h3><p>مواقع، تطبيقات، سوشيال ميديا.</p></div>
+          <div class="service-card"><i class="fas fa-print"></i><h3>مطبوعات</h3><p>مجلات، تغليف، بروشورات.</p></div>
+          <div class="service-card"><i class="fas fa-paint-brush"></i><h3>رسم توضيحي</h3><p>شخصيات، أيقونات، سرد بصري.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- عن رمزي + رقم واتساب -->
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-image"><i class="fas fa-user-astronaut"></i></div>
+        <div class="about-text">
+          <h3>شغف يلتقي بالدقة</h3>
+          <p>رمزي الضبيبي، مصمم جرافيك مقيم بين صنعاء وبرلين. أعمالي ظهرت في منصات Communication Arts و It's Nice That. تعاونت مع علامات ناشئة وراسخة لأضفي طاقة بصرية جديدة.</p>
+          <p>أؤمن بالجمال الخالد والرسالة الواضحة والنهج التشاركي. كل مشروع يبدأ بمحادثة – دعنا نتحدث عن مشروعك.</p>
+          
+          <!-- رابط واتساب مباشر -->
+          <a href="https://wa.me/967783914570" target="_blank" class="whatsapp-link">
+            <i class="fab fa-whatsapp"></i> +967 783 914 570
+          </a>
+          <br>
+          <a href="#contact" class="btn" style="background: transparent; color:#5f4b8b; box-shadow: none; border:2px solid #5f4b8b; padding: 12px 36px; margin-top: 10px;">تواصل معي</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- الاتصال: نموذج يرسل إلى البريد المطلوب -->
+    <section id="contact" style="background: #faf8ff;">
+      <div class="container">
+        <h2 class="section-title">لنبدع معاً</h2>
+        <p class="section-sub">لديك فكرة أو مشروع؟ أملاً أن أسمع عنها. املأ النموذج وسأعود إليك خلال 24 ساعة.</p>
+        
+        <!-- نموذج FormSubmit (إرسال إلى البريد) -->
+        <div class="contact-form">
+          <form action="https://formsubmit.co/rmzyhlalaldbyby@gmail.com" method="POST" id="contactForm">
+            <!-- منع البريد العشوائي -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- إعادة التوجيه بعد الإرسال (اختياري) -->
+            <input type="hidden" name="_next" value="https://rmzydhbi.com/thank-you">
+            <!-- يمكنك تغيير الرابط أعلاه إلى صفحة شكر حقيقية، أو استخدام رابط افتراضي -->
+            <input type="hidden" name="_subject" value="رسالة جديدة من موقع رمزي الضبيبي">
+            
+            <div class="form-group">
+              <input type="text" name="الاسم" id="name" placeholder="الاسم الكريم" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="البريد" id="email" placeholder="البريد الإلكتروني" required>
+            </div>
+            <div class="form-group">
+              <textarea name="الرسالة" id="message" rows="4" placeholder="حدثني عن مشروعك..." required></textarea>
+            </div>
+            <button type="submit" class="contact-btn" id="submitBtn">أرسل الرسالة</button>
+            <div class="form-message" id="formMessage"></div>
+          </form>
+          
+          <!-- عرض رقم الهاتف وواتساب مرة أخرى -->
+          <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ddd8e8;">
+            <i class="fas fa-phone-alt" style="color: #5f4b8b;"></i>
+            <a href="https://wa.me/967783914570" target="_blank" style="text-decoration: none; color: inherit;">
+              <span class="phone-number" style="background: transparent; font-size: 1.3rem; color: #2d2d42;">+967 783 914 570</span>
+            </a>
+            <p style="margin-top: 8px; color: #7a6a9a;">(اضغط على الرقم لفتتح واتساب)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="logo-container" style="justify-content: center; margin-bottom: 10px;">
+        <img src="الضبيبي.jpg" 
+             alt="شعار رمزي الضبيبي" 
+             class="logo-img" style="max-height:50px;"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="logo-fallback" style="display: none; color: #ddd8e8; -webkit-text-fill-color: #ddd8e8;">رمزي الضبيبي</div>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p style="color:#a79ec0;">© 2025 رمزي الضبيبي – استوديو تصميم. جميع الحقوق محفوظة.</p>
+      <!-- رابط واتساب في التذييل -->
+      <a href="https://wa.me/967783914570" target="_blank" style="text-decoration: none;">
+        <p style="color:#b4a5d0; direction: ltr; display: inline-block; background: #2a2538; padding: 5px 20px; border-radius: 60px;">
+          <i class="fab fa-whatsapp" style="margin-left: 5px;"></i> +967 783 914 570
+        </p>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // قائمة الجوال
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // إظهار رسالة تأكيد محلية عند إرسال النموذج (اختياري، لا تتعارض مع FormSubmit)
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+      // FormSubmit سيقوم بالإرسال الحقيقي، ولكننا نضيف رسالة فورية.
+      // لا نستخدم preventDefault لأننا نريد الإرسال.
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name === '' || email === '' || message === '') {
+        e.preventDefault();  // نمنع الإرسال إذا كانت الحقول فارغة
+        formMessage.textContent = '⚠️ الرجاء تعبئة جميع الحقول.';
+        formMessage.style.color = '#c93a3a';
+      } else {
+        // السماح بالإرسال، FormSubmit سيتولى الباقي
+        formMessage.textContent = '✨ جاري الإرسال... شكراً لتواصلك!';
+        formMessage.style.color = '#5f4b8b';
+        // يمكن إبقاء الرسالة أو إزالتها بعد الإرسال
+      }
+    });
+
+    // تحسين عرض الشعار الاحتياطي
+    window.addEventListener('load', function() {
+      const logoImgs = document.querySelectorAll('.logo-img');
+      logoImgs.forEach(img => {
+        if (img.complete && img.naturalHeight > 0) {
+          if (img.nextElementSibling && img.nextElementSibling.classList.contains('logo-fallback')) {
+            img.nextElementSibling.style.display = 'none';
+          }
+        } else {
+          if (img.nextElementSibling && img.nextElementSibling.classList.contains('logo-fallback')) {
+            img.nextElementSibling.style.display = 'flex';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
